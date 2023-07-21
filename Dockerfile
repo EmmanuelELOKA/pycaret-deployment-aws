@@ -14,5 +14,8 @@ RUN pip install -r requirements.txt
 # Expose port 
 EXPOSE 5000
 
-# Run the application:
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:5000/ || exit 1
+
+# Run the application
 CMD ["python", "app.py"]
